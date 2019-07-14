@@ -9,7 +9,7 @@
   },
   "author": "",
   "license": "ISC",
-  "devDependencies": {
+  "dependencies": {
     "node-telegram-bot-api": "^0.30.0"
   }
 }
