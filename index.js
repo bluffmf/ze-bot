@@ -9,10 +9,11 @@ bot.on('message', (msg) => {
 
     // bot.deleteMessage(chatId, msg.message_id);
     
-    if (msg.from.first_name === "Alex") { // || msg.from.first_name === "Alex"
+    if (msg.from.first_name === "Alex") { // || msg.from.first_name === "DmitryAlex"
         saveAlexLastGif(chatId, msg);
     }
     if (msg.from.is_bot === true) {
+        bot.sendMessage(chatId, 'fuck you MXM');
         backAlexGif(chatId);
     }
 });
