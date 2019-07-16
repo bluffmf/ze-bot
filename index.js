@@ -7,10 +7,12 @@ var alexLastGifId = '';
 bot.on('message', (msg) => {
     var chatId = msg.chat.id;
 
-    if (msg.from.first_name === "Dmitry" || msg.from.first_name === "Alex") {
+    // bot.deleteMessage(chatId, msg.message_id);
+    
+    if (msg.from.first_name === "Alex") { // || msg.from.first_name === "Alex"
         saveAlexLastGif(chatId, msg);
     }
-    if (msg.from.is_bot === false) {
+    if (msg.from.is_bot === true) {
         backAlexGif(chatId);
     }
 });
