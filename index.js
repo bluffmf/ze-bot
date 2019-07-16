@@ -1,31 +1,43 @@
 var TelegramBot = require('node-telegram-bot-api');
-var token = '618735909:AAFKkyDWFLWEfwoh_OQX4UWHdpBVxcPPoqk';
-var bot = new TelegramBot(token, {polling: true});
+var alexLastGifDocument = null;
 
-var alexLastGifId = '';
+var tokenPorohoBota = '832412147:AAHKmUSBgSc6BVAfj0CWeFdfb06MfCfq_3Q';
+var porohoBot = new TelegramBot(tokenPorohoBota, {polling: true});
 
-bot.on('message', (msg) => {
+
+////PorohoBOT
+porohoBot.on('message', (msg) => {
     var chatId = msg.chat.id;
-
-    // bot.deleteMessage(chatId, msg.message_id);
-    
-    if (msg.from.first_name === "Alex") { // || msg.from.first_name === "DmitryAlex"
-        saveAlexLastGif(chatId, msg);
-    }
-    if (msg.from.is_bot === true) {
-        bot.sendMessage(chatId, 'fuck you MXM');
-        backAlexGif(chatId);
-    }
+    saveAlexLastGif(chatId, msg);
 });
 
+
 function saveAlexLastGif(chatId, msg) {
+    if (msg.from.last_name != 'Lyubavin') return false; //Lyubavin  Trojan
     if (msg.document && msg.document.mime_type === "video/mp4") {
-        alexLastGifId = msg.document.file_id;
+        alexLastGifDocument = msg.document;
+        porohoBot.deleteMessage(chatId, msg.message_id);
+        backAlexGif(chatId);
     }
 }
 
 function backAlexGif(chatId) {
-    if (alexLastGifId != '') {
-        bot.sendDocument(chatId, alexLastGifId);
+    if (alexLastGifDocument && alexLastGifDocument.file_id != '') {
+        porohoBot.sendDocument(chatId, alexLastGifDocument.file_id);
     }
 }
+
+
+// var tokenZeBota = '618735909:AAFKkyDWFLWEfwoh_OQX4UWHdpBVxcPPoqk';
+// var zeBot = new TelegramBot(tokenZeBota, {polling: true});
+
+////ZeBOT
+// zeBot.on('message',(msg) => {
+//     var chatId = msg.chat.id;
+//     saveAlexLastGif(chatId, msg);
+
+//     setTimeout(() => {
+//         backAlexGif(chatId);
+//         //zeBot.sendMessage(chatId, 'ze');
+//     }, 2000);
+// });
