@@ -13,12 +13,16 @@ porohoBot.on('message', (msg) => {
 
 
 function saveAlexLastGif(chatId, msg) {
-    if (msg.from.last_name != 'Lyubavin') return false; //Lyubavin  Trojan
-    if (msg.document && msg.document.mime_type === "video/mp4") {
-        alexLastGifDocument = msg.document;
-        porohoBot.deleteMessage(chatId, msg.message_id);
-        backAlexGif(chatId);
+
+    if (msg === "hi") {
+        porohoBot.sendMessage(chatId, "blabalabla");
     }
+    // if (msg.from.last_name != 'Lyubavin') return false; //Lyubavin  Trojan
+    // if (msg.document && msg.document.mime_type === "video/mp4") {
+    //     alexLastGifDocument = msg.document;
+    //     porohoBot.deleteMessage(chatId, msg.message_id);
+    //     backAlexGif(chatId);
+    // }
 }
 
 function backAlexGif(chatId) {
