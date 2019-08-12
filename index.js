@@ -14,7 +14,9 @@ porohoBot.on('message', (msg) => {
 
 function saveAlexLastGif(chatId, msg) {
 
-    if (msg === "hi") {
+    console.log(msg);
+    
+    if (msg.text === "hi") {
         porohoBot.sendMessage(chatId, "blabalabla");
     }
     // if (msg.from.last_name != 'Lyubavin') return false; //Lyubavin  Trojan
